@@ -9,6 +9,7 @@ public class WorklightMobile extends WLDroidGap {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		super.setIntegerProperty("splashscreen", R.drawable.splash);
 	}
 	
 	/**
@@ -16,7 +17,7 @@ public class WorklightMobile extends WLDroidGap {
      */
 	@Override
 	public void onWLInitCompleted(Bundle savedInstanceState){
-		super.loadUrl(getWebMainFilePath());
+		super.loadUrl(getWebMainFilePath(), 3000);
 		// Add custom initialization code after this line
 	}
 	

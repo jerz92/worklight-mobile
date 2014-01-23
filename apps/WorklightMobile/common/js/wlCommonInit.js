@@ -1,43 +1,20 @@
 /**
-* @license
-* Licensed Materials - Property of IBM
-* 5725-G92 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.
-* US Government Users Restricted Rights - Use, duplication or
-* disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
-*/
+ * @license
+ * Licensed Materials - Property of IBM
+ * 5725-G92 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
 
-function wlCommonInit(){
-	loadFeeds();
+function wlCommonInit() {
+    loadFeeds();
 }
 
-function loadFeeds(){
-	var email = "sale@tshirtshop.com";
-	var password ="aaaa1111";
-	var invocationData = {
-			adapter : 'UserId',
-			procedure : 'getUserId',
-			parameters : [email,password]
-		};
-	
-	WL.Client.invokeProcedure(invocationData,{
-		onSuccess : loadFeedsSuccess,
-		onFailure : loadFeedsFailure
-	});
-}
+function barcodeScan() {
+    $('#mydiv').html('');
+    window.plugins.barcodeScanner.scan(
 
-function loadFeedsSuccess(result){
-	WL.Logger.debug("Feed retrieve success");
-	if (result.invocationResult.tbl_merchant.length>0) 
-		alert("success");
-	else 
-		loadFeedsFailure();
-}
-
-function loadFeedsFailure(result){
-	WL.Logger.error("Feed retrieve failure");
-	WL.SimpleDialog.show("EngadgetReader", "Cannot retrieve feed. Please check your internet connectivity.", 
-	[{
-		text : 'Reload App',
-		handler : WL.Client.reloadApp 
-	}]);
+    function(result) {
+        $('#mydiv').html('Barcode: ' + result.text);
+    });
 }

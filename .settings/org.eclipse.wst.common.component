@@ -2,6 +2,7 @@
     <wb-module deploy-name="worklight-mobile">
         <wb-resource deploy-path="/" source-path="/apps/WorklightMobile/common"/>
         <wb-resource deploy-path="/" source-path="/apps/WorklightMobile/android"/>
+        <wb-resource deploy-path="/" source-path="/apps/WorklightMobile/iphone"/>
         <property name="context-root" value="worklight-mobile"/>
     </wb-module>
 </project-modules>
